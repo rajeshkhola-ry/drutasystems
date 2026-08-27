@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Zap, Sparkles, ArrowRight, Video, Briefcase, Code, ShieldCheck, Mail, Globe, Layers, Cpu } from 'lucide-react';
+import { Zap, Sparkles, ArrowRight, Video, Briefcase, Code, ShieldCheck, Mail, Globe, Layers, Cpu, Users } from 'lucide-react';
+import Testimonials from './components/Testimonials';
 
 export default function Home() {
   return (
@@ -41,9 +42,13 @@ export default function Home() {
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
             Engineering scalable SaaS & modern <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">web technologies</span>
           </h1>
-          <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-6 leading-relaxed">
             Druta Systems is a venture and product studio creating production-ready AI software, video engines, and full-stack digital architectures.
           </p>
+          <div className="inline-flex items-start sm:items-center gap-2.5 px-5 py-3 rounded-2xl border border-slate-800 bg-slate-900/60 text-slate-300 text-xs sm:text-sm font-medium mb-10 text-left">
+            <Users className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
+            <span>Backed by experienced software architects and product engineers with <span className="text-white font-semibold">5+ years</span> of verified full-stack & AI delivery.</span>
+          </div>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link href="/products" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold hover:opacity-95 transition-all shadow-lg shadow-cyan-500/25">
               Explore In-House Products <ArrowRight className="w-4 h-4" />
@@ -141,6 +146,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Testimonials />
 
       {/* Services / Client Capabilities */}
       <section id="services" className="py-20 px-6 bg-slate-900/30 border-t border-slate-900">

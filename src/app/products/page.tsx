@@ -9,6 +9,8 @@ import {
   Award, Globe2, Code2, Users, ArrowUpRight, Terminal, Laptop,
   Lock, RefreshCw, HelpCircle, ChevronDown, Check, Star
 } from 'lucide-react';
+import Testimonials from '../components/Testimonials';
+import ProductMockup from '../components/ProductMockup';
 
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
@@ -118,9 +120,13 @@ export default function Home() {
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
             We architect & build <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">World-Class Software</span> for high-growth ventures
           </h1>
-          <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-6 leading-relaxed">
             From early-stage AI MVPs to enterprise platforms, Druta Systems combines 5+ years of battle-tested engineering with cutting-edge browser processing & cloud speed.
           </p>
+          <div className="inline-flex items-start sm:items-center gap-2.5 px-5 py-3 rounded-2xl border border-slate-800 bg-slate-900/60 text-slate-300 text-xs sm:text-sm font-medium mb-10 text-left">
+            <Users className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5 sm:mt-0" />
+            <span>Backed by experienced software architects and product engineers with <span className="text-white font-semibold">5+ years</span> of verified full-stack & AI delivery.</span>
+          </div>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a href="#quote-form" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold hover:opacity-95 transition-all shadow-lg shadow-cyan-500/25">
               Request Project Proposal <ArrowRight className="w-4 h-4" />
@@ -227,6 +233,16 @@ export default function Home() {
                   <CheckCircle2 className="w-4 h-4 text-cyan-400" /> Recurring subscription billing engine
                 </div>
               </div>
+              <ProductMockup
+                url="theclipeditor.com/dashboard"
+                accent="cyan"
+                stats={[
+                  { value: '4K', label: 'Max Export' },
+                  { value: '0s', label: 'Render Wait' },
+                  { value: '12k+', label: 'Clips Rendered' },
+                ]}
+                badges={['WASM', 'Canvas API', 'FFmpeg.wasm']}
+              />
             </div>
             <a href="https://theclipeditor.com" target="_blank" rel="noopener noreferrer" className="w-full py-2.5 rounded-xl border border-slate-700 bg-slate-900 hover:bg-slate-800 text-center text-xs font-semibold text-white transition-all block">
               View theclipeditor.com
@@ -256,6 +272,16 @@ export default function Home() {
                   <CheckCircle2 className="w-4 h-4 text-indigo-400" /> Sub-second SEO loading speeds
                 </div>
               </div>
+              <ProductMockup
+                url="getreadyjob.com/portal"
+                accent="indigo"
+                stats={[
+                  { value: '10k+', label: 'Active Users' },
+                  { value: '<1s', label: 'Load Speed' },
+                  { value: '99.9%', label: 'Uptime' },
+                ]}
+                badges={['Next.js', 'Edge Auth', 'Cloud DB']}
+              />
             </div>
             <a href="https://getreadyjob.com" target="_blank" rel="noopener noreferrer" className="w-full py-2.5 rounded-xl border border-slate-700 bg-slate-900 hover:bg-slate-800 text-center text-xs font-semibold text-white transition-all block">
               View getreadyjob.com
@@ -263,6 +289,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Testimonials />
 
       {/* Pricing / Engagement Packages */}
       <section id="pricing" className="py-20 px-6 max-w-6xl mx-auto border-t border-slate-900">
