@@ -197,7 +197,7 @@ export default function Home() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-semibold mb-3">
             <Rocket className="w-3.5 h-3.5" /> Proof of Execution
           </div>
-          <h2 className="text-3xl font-bold text-white mb-3">Featured In-House Software</h2>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 tracking-tight drop-shadow-[0_0_25px_rgba(34,211,238,0.35)]">Featured In-House Software</h2>
           <p className="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
             Commercial products built and scaled by our core studio engineering team.
           </p>
@@ -282,7 +282,10 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-bold text-white mb-1">MVP Sprint</h3>
               <p className="text-xs text-slate-400 mb-4">For founders needing a fast, working product to pitch or validate.</p>
-              <div className="text-3xl font-extrabold text-white mb-4">₹35,000 <span className="text-xs text-slate-400 font-normal">/ one-time</span></div>
+              <div className="mb-4">
+                <div className="text-3xl font-extrabold text-white">₹35,000 <span className="text-slate-400">/ $499</span></div>
+                <div className="text-xs text-slate-500 font-medium mt-1">one-time</div>
+              </div>
               <ul className="text-xs text-slate-300 space-y-2 mb-6">
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-cyan-400" /> 1-2 Weeks Rapid Delivery</li>
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-cyan-400" /> Full Next.js 15 Web Architecture</li>
@@ -306,7 +309,10 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-bold text-white mb-1">Full-Scale SaaS</h3>
               <p className="text-xs text-slate-400 mb-4">Complete commercial web app with payments, AI, and admin portal.</p>
-              <div className="text-3xl font-extrabold text-cyan-400 mb-4">₹75,000 - ₹1.5L <span className="text-xs text-slate-400 font-normal">/ project</span></div>
+              <div className="mb-4">
+                <div className="text-3xl font-extrabold text-cyan-400">₹75,000 - ₹1.5L <span className="text-slate-300">/ $999 - $1,999</span></div>
+                <div className="text-xs text-slate-500 font-medium mt-1">per project</div>
+              </div>
               <ul className="text-xs text-slate-300 space-y-2 mb-6">
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-cyan-400" /> 3-4 Weeks Turnaround</li>
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-cyan-400" /> OpenAI / Claude API AI Features</li>
@@ -328,7 +334,10 @@ export default function Home() {
             <div>
               <h3 className="text-lg font-bold text-white mb-1">Enterprise Custom</h3>
               <p className="text-xs text-slate-400 mb-4">Large-scale platforms, custom video/AI pipelines, and bespoke portals.</p>
-              <div className="text-3xl font-extrabold text-white mb-4">Custom Scope</div>
+              <div className="mb-4">
+                <div className="text-3xl font-extrabold text-white">Custom <span className="text-slate-400">/ $2,500+</span></div>
+                <div className="text-xs text-slate-500 font-medium mt-1">tailored scope</div>
+              </div>
               <ul className="text-xs text-slate-300 space-y-2 mb-6">
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-indigo-400" /> Dedicated Technical Lead</li>
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-indigo-400" /> Complex Multimedia / FFmpeg Engines</li>
