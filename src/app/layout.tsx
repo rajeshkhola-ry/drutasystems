@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import WhatsAppButton from "./components/WhatsAppButton";
 import "./globals.css";
 
@@ -99,6 +100,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-slate-950 text-slate-100 antialiased`}>
         {children}
         <WhatsAppButton />
+        <GoogleAnalytics gaId="G-8J2RC08FFN" />
       </body>
     </html>
   );
