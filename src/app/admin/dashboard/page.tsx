@@ -1,12 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { notFound } from "next/navigation";
-import {
-  registerAdminMachineFromUrl,
-  unregisterAdminMachine,
-  useAdminMachineStatus,
-} from "../../../config/adminMachine";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { ADMIN_SESSION_ENDPOINT } from "../../../config/adminAuth";
 import {
   DRUTA_AGENTS,
   DRUTA_AGENT_LABELS,
@@ -94,12 +90,7 @@ const SELECT_CLASS =
   "rounded-lg border border-white/10 bg-neutral-950 px-3 py-2 text-sm text-white outline-none focus:border-indigo-500 [color-scheme:dark]";
 
 export default function AdminDashboard() {
-  const machineStatus = useAdminMachineStatus();
-
-  useEffect(() => {
-    registerAdminMachineFromUrl();
-  }, []);
-
+  const router = useRouter();
   const [wallets, setWallets] = useState<ProviderWallet[]>(PROVIDER_WALLETS);
   const [walletDrafts, setWalletDrafts] = useState<Record<string, string>>({});
 
@@ -154,8 +145,10 @@ export default function AdminDashboard() {
   const [alertEmails, setAlertEmails] = useState<string[]>(ALERT_EMAILS);
   const [newEmail, setNewEmail] = useState("");
 
-  function handleLock() {
-    unregisterAdminMachine();
+  async function handleLock() {
+    await fetch(ADMIN_SESSION_ENDPOINT, { method: "DELETE" });
+    router.push("/");
+    router.refresh();
   }
 
   function handleExportCsv() {
@@ -223,9 +216,6 @@ export default function AdminDashboard() {
     setWalletDrafts((prev) => ({ ...prev, [id]: "" }));
   }
 
-  if (machineStatus === null) return null;
-  if (!machineStatus) notFound();
-
   return (
     <main className="min-h-screen bg-neutral-950 px-4 py-8 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-6xl">
@@ -242,7 +232,7 @@ export default function AdminDashboard() {
             onClick={handleLock}
             className="self-start rounded-lg border border-white/10 px-3 py-1.5 text-xs text-neutral-300 hover:bg-white/5 sm:self-auto"
           >
-            Unregister this device
+            Sign out
           </button>
         </header>
 
