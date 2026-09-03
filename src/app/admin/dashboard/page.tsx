@@ -7,6 +7,7 @@ import {
   unregisterAdminMachine,
   useAdminMachineStatus,
 } from "../../../config/adminMachine";
+import { DRUTA_AGENT_LABELS } from "../../../config/drutaAgents";
 
 const ALERT_EMAILS = ["RAJESH.KHOLA@GMAIL.COM", "RAJESH.KHOLA@OUTLOOK.COM"];
 
@@ -45,18 +46,6 @@ const PROVIDER_WALLETS: ProviderWallet[] = [
   { id: "google", name: "Google Gemini", balance: 2410.1, currency: "USD", updatedAt: "2026-09-03" },
 ];
 
-// Fixed roster — every agent/model always renders a row, even with zero activity in range.
-const MASTER_AGENTS = [
-  "Sonnet 5",
-  "Claude Opus",
-  "DeepSeek V3",
-  "Gemini 2.5 Pro",
-  "Tax Engine Agent",
-  "Compliance Agent",
-  "Support Agent",
-  "Billing Agent",
-] as const;
-
 type AgentRun = {
   agent: string;
   date: string; // ISO yyyy-mm-dd
@@ -71,12 +60,12 @@ type AgentRun = {
 };
 
 const AGENT_RUNS: AgentRun[] = [
-  { agent: "Sonnet 5", date: "2026-09-01", year: 2026, month: 9, runs: 980, tasks: 612, errors: 24, firstTrySuccess: 528, highIteration: 61, cost: 418.72 },
-  { agent: "Sonnet 5", date: "2026-08-12", year: 2026, month: 8, runs: 1140, tasks: 705, errors: 38, firstTrySuccess: 590, highIteration: 88, cost: 502.15 },
+  { agent: "Claude Sonnet", date: "2026-09-01", year: 2026, month: 9, runs: 980, tasks: 612, errors: 24, firstTrySuccess: 528, highIteration: 61, cost: 418.72 },
+  { agent: "Claude Sonnet", date: "2026-08-12", year: 2026, month: 8, runs: 1140, tasks: 705, errors: 38, firstTrySuccess: 590, highIteration: 88, cost: 502.15 },
   { agent: "Claude Opus", date: "2026-09-02", year: 2026, month: 9, runs: 420, tasks: 260, errors: 9, firstTrySuccess: 231, highIteration: 30, cost: 611.4 },
   { agent: "Claude Opus", date: "2025-12-09", year: 2025, month: 12, runs: 380, tasks: 224, errors: 15, firstTrySuccess: 189, highIteration: 41, cost: 548.9 },
-  { agent: "DeepSeek V3", date: "2026-09-03", year: 2026, month: 9, runs: 1520, tasks: 1104, errors: 52, firstTrySuccess: 942, highIteration: 130, cost: 96.33 },
-  { agent: "Gemini 2.5 Pro", date: "2026-08-27", year: 2026, month: 8, runs: 640, tasks: 401, errors: 18, firstTrySuccess: 344, highIteration: 47, cost: 187.6 },
+  { agent: "DeepSeek-V3", date: "2026-09-03", year: 2026, month: 9, runs: 1520, tasks: 1104, errors: 52, firstTrySuccess: 942, highIteration: 130, cost: 96.33 },
+  { agent: "ChatGPT (GPT-4o)", date: "2026-08-27", year: 2026, month: 8, runs: 640, tasks: 401, errors: 18, firstTrySuccess: 344, highIteration: 47, cost: 187.6 },
   { agent: "Tax Engine Agent", date: "2026-09-01", year: 2026, month: 9, runs: 610, tasks: 420, errors: 12, firstTrySuccess: 361, highIteration: 27, cost: 142.8 },
   { agent: "Tax Engine Agent", date: "2026-08-14", year: 2026, month: 8, runs: 742, tasks: 512, errors: 21, firstTrySuccess: 430, highIteration: 41, cost: 176.45 },
   { agent: "Compliance Agent", date: "2026-09-02", year: 2026, month: 9, runs: 244, tasks: 190, errors: 4, firstTrySuccess: 171, highIteration: 9, cost: 61.2 },
@@ -85,6 +74,12 @@ const AGENT_RUNS: AgentRun[] = [
   { agent: "Support Agent", date: "2025-12-11", year: 2025, month: 12, runs: 861, tasks: 588, errors: 40, firstTrySuccess: 430, highIteration: 96, cost: 190.11 },
   { agent: "Billing Agent", date: "2025-11-05", year: 2025, month: 11, runs: 388, tasks: 310, errors: 7, firstTrySuccess: 281, highIteration: 18, cost: 58.4 },
 ];
+
+// Every agent the extension ships, plus any extra agent seen in run data, so a
+// newly added agent appears without editing this file.
+const MASTER_AGENTS: string[] = Array.from(
+  new Set([...DRUTA_AGENT_LABELS, ...AGENT_RUNS.map((r) => r.agent)])
+);
 
 const MONTH_NAMES = [
   "January", "February", "March", "April", "May", "June",
@@ -102,7 +97,9 @@ export default function AdminDashboard() {
   }, []);
 
   const [wallets, setWallets] = useState<ProviderWallet[]>(PROVIDER_WALLETS);
-  const [walletDrafts, setWalletDrafts] = useState<Record<string, string>>({});  const [reportYear, setReportYear] = useState<string>("all");
+  const [walletDrafts, setWalletDrafts] = useState<Record<string, string>>({});
+
+  const [reportYear, setReportYear] = useState<string>("all");
   const [reportMonth, setReportMonth] = useState<string>("all");
   const [fromDate, setFromDate] = useState<string>("");
   const [toDate, setToDate] = useState<string>("");
