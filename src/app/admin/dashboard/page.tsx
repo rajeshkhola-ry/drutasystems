@@ -7,7 +7,11 @@ import {
   unregisterAdminMachine,
   useAdminMachineStatus,
 } from "../../../config/adminMachine";
-import { DRUTA_AGENT_LABELS } from "../../../config/drutaAgents";
+import {
+  DRUTA_AGENTS,
+  DRUTA_AGENT_LABELS,
+  THINKING_MODE_LABELS,
+} from "../../../config/drutaAgents";
 
 const ALERT_EMAILS = ["RAJESH.KHOLA@GMAIL.COM", "RAJESH.KHOLA@OUTLOOK.COM"];
 
@@ -146,12 +150,6 @@ export default function AdminDashboard() {
     }),
     { runs: 0, tasks: 0, errors: 0, cost: 0 }
   );
-
-  const [costDeductions] = useState([
-    { id: 1, label: "OpenAI API usage", amount: 42.15, time: "2 min ago" },
-    { id: 2, label: "Twilio SMS alerts", amount: 3.2, time: "18 min ago" },
-    { id: 3, label: "Vercel hosting", amount: 9.99, time: "1 hr ago" },
-  ]);
 
   const [alertEmails, setAlertEmails] = useState<string[]>(ALERT_EMAILS);
   const [newEmail, setNewEmail] = useState("");
@@ -450,30 +448,47 @@ export default function AdminDashboard() {
           </div>
         </section>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {/* Real-time cost deductions */}
-          <section className="rounded-2xl border border-white/10 bg-neutral-900 p-6 lg:col-span-3">
-            <h2 className="text-sm font-medium text-neutral-400 mb-4">
-              Real-Time Cost Deductions
-            </h2>
-            <ul className="divide-y divide-white/5">
-              {costDeductions.map((item) => (
-                <li
-                  key={item.id}
-                  className="flex items-center justify-between py-3 text-sm"
-                >
-                  <div>
-                    <p className="text-white">{item.label}</p>
-                    <p className="text-xs text-neutral-500">{item.time}</p>
-                  </div>
-                  <span className="font-medium text-red-400">
-                    -${item.amount.toFixed(2)}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </section>
+        {/* Active rate matrix — current rates only, no historical pricing */}
+        <section className="mb-6 rounded-2xl border border-white/10 bg-neutral-900 p-6">
+          <h2 className="text-sm font-medium text-neutral-400">
+            Active Agent Rate Matrix
+          </h2>
+          <p className="mb-4 text-xs text-neutral-500">
+            Live rates applied by the Druta extension, in USD per 1K tokens.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[720px] text-left text-sm">
+              <thead>
+                <tr className="border-b border-white/10 text-xs uppercase tracking-wide text-neutral-400">
+                  <th className="pb-3 font-medium">Agent</th>
+                  <th className="pb-3 font-medium">Model / Version</th>
+                  <th className="pb-3 font-medium">Thinking Mode</th>
+                  <th className="pb-3 font-medium">Context</th>
+                  <th className="pb-3 font-medium">Input / 1K</th>
+                  <th className="pb-3 font-medium">Output / 1K</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5">
+                {DRUTA_AGENTS.map((agent) => (
+                  <tr key={agent.id}>
+                    <td className="py-3 text-white">{agent.label}</td>
+                    <td className="py-3 font-mono text-xs text-neutral-400">{agent.modelId}</td>
+                    <td className="py-3">
+                      <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-neutral-300">
+                        {THINKING_MODE_LABELS[agent.thinking]}
+                      </span>
+                    </td>
+                    <td className="py-3 text-neutral-300">{agent.contextLabel}</td>
+                    <td className="py-3 text-neutral-300">${agent.input.toFixed(5)}</td>
+                    <td className="py-3 text-indigo-300">${agent.output.toFixed(5)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
 
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {/* System health metrics */}
           <section className="rounded-2xl border border-white/10 bg-neutral-900 p-6 lg:col-span-2">
             <h2 className="text-sm font-medium text-neutral-400 mb-4">
