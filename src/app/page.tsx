@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Zap, Sparkles, ArrowRight, Video, Briefcase, Code, ShieldCheck, Mail, Globe, Layers, Cpu, Users } from 'lucide-react';
 import Testimonials from './components/Testimonials';
+import AdminReportsButton from './components/AdminReportsButton';
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
             <Link href="/" className="text-cyan-400">Home</Link>
             <Link href="/products" className="text-slate-400 hover:text-white transition-colors">Products</Link>
             <a href="#services" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Capabilities</a>
+            <AdminReportsButton />
             <a href="#contact" className="px-4 py-2 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold transition-all shadow-md shadow-cyan-500/20">
               Contact Us
             </a>
