@@ -40,6 +40,15 @@ export function registerAdminMachineFromUrl(): void {
   const candidate = new URLSearchParams(window.location.search).get(MACHINE_SETUP_PARAM);
   if (candidate !== ADMIN_MACHINE_ID) return;
   window.localStorage.setItem(MACHINE_ID_STORAGE, candidate);
+  // Drop the setup value from the address bar so it can't be copied out of history.
+  const url = new URL(window.location.href);
+  url.searchParams.delete(MACHINE_SETUP_PARAM);
+  window.history.replaceState(null, "", url.pathname + url.search);
+  listeners.forEach((listener) => listener());
+}
+
+export function unregisterAdminMachine(): void {
+  window.localStorage.removeItem(MACHINE_ID_STORAGE);
   listeners.forEach((listener) => listener());
 }
 

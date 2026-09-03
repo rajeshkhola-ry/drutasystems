@@ -1,29 +1,14 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 import { notFound } from "next/navigation";
-import { registerAdminMachineFromUrl, useAdminMachineStatus } from "../../../config/adminMachine";
+import {
+  registerAdminMachineFromUrl,
+  unregisterAdminMachine,
+  useAdminMachineStatus,
+} from "../../../config/adminMachine";
 
 const ALERT_EMAILS = ["RAJESH.KHOLA@GMAIL.COM", "RAJESH.KHOLA@OUTLOOK.COM"];
-
-const ADMIN_KEY_STORAGE = "druta_admin_key";
-
-const keyListeners = new Set<() => void>();
-
-function subscribeStoredKey(onChange: () => void) {
-  keyListeners.add(onChange);
-  window.addEventListener("storage", onChange);
-  return () => {
-    keyListeners.delete(onChange);
-    window.removeEventListener("storage", onChange);
-  };
-}
-
-function writeStoredKey(value: string | null) {
-  if (value === null) window.localStorage.removeItem(ADMIN_KEY_STORAGE);
-  else window.localStorage.setItem(ADMIN_KEY_STORAGE, value);
-  keyListeners.forEach((listener) => listener());
-}
 
 type HealthMetric = {
   label: string;
@@ -116,21 +101,8 @@ export default function AdminDashboard() {
     registerAdminMachineFromUrl();
   }, []);
 
-  const [apiKey, setApiKey] = useState("");
-  const [showKey, setShowKey] = useState(false);
-  const [authError, setAuthError] = useState("");
-
-  const storedKey = useSyncExternalStore(
-    subscribeStoredKey,
-    () => window.localStorage.getItem(ADMIN_KEY_STORAGE),
-    () => null
-  );
-  const isUnlocked = Boolean(storedKey);
-
   const [wallets, setWallets] = useState<ProviderWallet[]>(PROVIDER_WALLETS);
-  const [walletDrafts, setWalletDrafts] = useState<Record<string, string>>({});
-
-  const [reportYear, setReportYear] = useState<string>("all");
+  const [walletDrafts, setWalletDrafts] = useState<Record<string, string>>({});  const [reportYear, setReportYear] = useState<string>("all");
   const [reportMonth, setReportMonth] = useState<string>("all");
   const [fromDate, setFromDate] = useState<string>("");
   const [toDate, setToDate] = useState<string>("");
@@ -187,20 +159,8 @@ export default function AdminDashboard() {
   const [alertEmails, setAlertEmails] = useState<string[]>(ALERT_EMAILS);
   const [newEmail, setNewEmail] = useState("");
 
-  function handleUnlock(e: React.FormEvent) {
-    e.preventDefault();
-    if (!apiKey.trim()) {
-      setAuthError("API key is required.");
-      return;
-    }
-    // Real validation happens server-side; this only gates the client UI.
-    writeStoredKey(apiKey.trim());
-    setAuthError("");
-  }
-
   function handleLock() {
-    writeStoredKey(null);
-    setApiKey("");
+    unregisterAdminMachine();
   }
 
   function handleExportCsv() {
@@ -271,58 +231,6 @@ export default function AdminDashboard() {
   if (machineStatus === null) return null;
   if (!machineStatus) notFound();
 
-  if (!isUnlocked) {
-    return (
-      <main className="min-h-screen flex items-center justify-center bg-neutral-950 px-4">
-        <form
-          onSubmit={handleUnlock}
-          className="w-full max-w-md rounded-2xl border border-white/10 bg-neutral-900 p-8 shadow-xl"
-        >
-          <h1 className="text-xl font-semibold text-white mb-2">
-            Druta Systems Admin
-          </h1>
-          <p className="text-sm text-neutral-400 mb-6">
-            Enter your secure API key to access the admin dashboard.
-          </p>
-
-          <label htmlFor="apiKey" className="block text-sm text-neutral-300 mb-1">
-            API Key
-          </label>
-          <div className="relative mb-2">
-            <input
-              id="apiKey"
-              type={showKey ? "text" : "password"}
-              value={apiKey}
-              onChange={(e) => setApiKey(e.target.value)}
-              autoComplete="off"
-              spellCheck={false}
-              placeholder="sk-••••••••••••••••"
-              className="w-full rounded-lg border border-white/10 bg-neutral-950 px-3 py-2 pr-16 text-sm text-white placeholder-neutral-600 outline-none focus:border-indigo-500 [color-scheme:dark]"
-            />
-            <button
-              type="button"
-              onClick={() => setShowKey((v) => !v)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-neutral-400 hover:text-white"
-            >
-              {showKey ? "Hide" : "Show"}
-            </button>
-          </div>
-
-          {authError && (
-            <p className="text-sm text-red-400 mb-2">{authError}</p>
-          )}
-
-          <button
-            type="submit"
-            className="mt-4 w-full rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500 transition-colors"
-          >
-            Unlock Dashboard
-          </button>
-        </form>
-      </main>
-    );
-  }
-
   return (
     <main className="min-h-screen bg-neutral-950 px-4 py-8 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-6xl">
@@ -339,7 +247,7 @@ export default function AdminDashboard() {
             onClick={handleLock}
             className="self-start rounded-lg border border-white/10 px-3 py-1.5 text-xs text-neutral-300 hover:bg-white/5 sm:self-auto"
           >
-            Lock dashboard
+            Unregister this device
           </button>
         </header>
 
