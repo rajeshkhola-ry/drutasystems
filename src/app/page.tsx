@@ -147,6 +147,36 @@ export default function Home() {
             </a>
           </div>
         </div>
+
+        {/* Card 3: Proprietary In-House AI Engine - full width */}
+        <div className="mt-8 rounded-2xl border border-slate-800 bg-slate-900/40 p-8 hover:border-amber-500/50 transition-all group">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="flex-1">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+                  <Cpu className="w-6 h-6" />
+                </div>
+                <span className="text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 font-semibold border border-amber-500/20">
+                  In-House Engine
+                </span>
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-amber-300 transition-colors">DAI Flash</h3>
+              <p className="text-slate-400 text-sm mb-6 leading-relaxed max-w-2xl">
+                Custom-built internal AI infrastructure designed to supercharge our development workflows. Powered by our proprietary DAI Flash engine, our team automates complex tasks to deliver enterprise-grade, high-velocity results at a fraction of standard industry costs.
+              </p>
+              <div className="flex flex-wrap gap-2 text-xs text-slate-300">
+                <span className="px-2.5 py-1 bg-slate-800/80 rounded-md">DAI Flash Engine</span>
+                <span className="px-2.5 py-1 bg-slate-800/80 rounded-md">Workflow Automation</span>
+                <span className="px-2.5 py-1 bg-slate-800/80 rounded-md">Cost Optimization</span>
+                <span className="px-2.5 py-1 bg-slate-800/80 rounded-md">In-House AI Extension</span>
+                <span className="px-2.5 py-1 bg-slate-800/80 rounded-md">High-Velocity Delivery</span>
+              </div>
+            </div>
+            <a href="#contact" className="inline-flex items-center justify-center gap-2 shrink-0 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition-all whitespace-nowrap">
+              See How DAI Flash Delivers Faster &amp; Cheaper <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
       </section>
 
       <Testimonials />
@@ -186,7 +216,7 @@ export default function Home() {
           <div className="w-12 h-12 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mx-auto mb-4">
             <Mail className="w-6 h-6" />
           </div>
-          <h2 className="text-3xl font-extrabold text-white mb-3">Let's Build Something Great</h2>
+          <h2 className="text-3xl font-extrabold text-white mb-3">Let&apos;s Build Something Great</h2>
           <p className="text-slate-400 text-sm max-w-md mx-auto mb-8">
             Have a project in mind or looking for a custom web solution? Reach out directly to our engineering team.
           </p>
@@ -203,7 +233,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-slate-900 py-8 px-6 text-center text-xs text-slate-500">
-        <p>© 2026 Druta Systems. All rights reserved. Engineering high-speed digital products.</p>
+        <p>© 2026 Made in India, Druta Systems. All rights reserved. Engineering high-speed digital products.</p>
       </footer>
     </div>
   );
