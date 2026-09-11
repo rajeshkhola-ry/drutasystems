@@ -3,11 +3,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { 
-  Zap, Sparkles, ArrowRight, Layers, Cpu, ShieldCheck, 
+  Zap, Sparkles, ArrowRight, Cpu, ShieldCheck, 
   Mail, Phone, Building, User, FileText, Send, CheckCircle, 
-  CheckCircle2, Rocket, Clock, DollarSign, ExternalLink,
-  Award, Globe2, Code2, Users, ArrowUpRight, Terminal, Laptop,
-  Lock, RefreshCw, HelpCircle, ChevronDown, Check, Star
+  CheckCircle2, Rocket, DollarSign,
+  Award, Globe2, Code2, Users, ArrowUpRight,
+  Lock, RefreshCw, HelpCircle, ChevronDown, Check
 } from 'lucide-react';
 import Testimonials from '../components/Testimonials';
 import ProductMockup from '../components/ProductMockup';
@@ -50,7 +50,7 @@ export default function Home() {
       } else {
         alert('Submission error. Please try again.');
       }
-    } catch (error) {
+    } catch {
       alert('Network issue. Please try again.');
     } finally {
       setLoading(false);
@@ -100,9 +100,12 @@ export default function Home() {
           </Link>
           <div className="flex items-center gap-6 text-sm font-medium">
             <Link href="/" className="text-cyan-400">Home</Link>
+            <Link href="/products" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Products</Link>
+            <Link href="/case-studies" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Case Studies</Link>
             <a href="#showcase" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Portfolio</a>
             <a href="#pricing" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Pricing & Plans</a>
             <a href="#faq" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">FAQ</a>
+            <Link href="/#contact" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Contact</Link>
             <a href="#quote-form" className="px-4 py-2 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold transition-all shadow-md shadow-cyan-500/20">
               Start Project
             </a>
@@ -596,9 +599,64 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Product FAQ Section */}
+      <section id="product-faq" className="py-20 px-6 max-w-4xl mx-auto border-t border-slate-900">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-700 bg-slate-900 text-slate-300 text-xs font-semibold mb-3">
+            <HelpCircle className="w-3.5 h-3.5 text-cyan-400" /> Product FAQs
+          </div>
+          <h2 className="text-3xl font-bold text-white mb-2">Frequently Asked Product Questions</h2>
+          <p className="text-slate-400 text-sm">Quick answers about our in-house software products.</p>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+            <h3 className="text-sm font-semibold text-white mb-2">What products does Druta Systems currently offer?</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              We build and operate TheClipEditor Pro, a browser-based video clipping suite, and GetReadyJob Suite, a high-volume recruitment and candidate utility portal.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+            <h3 className="text-sm font-semibold text-white mb-2">Can I purchase a license or subscription to these products?</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Yes. Both products are available as live platforms. For direct licensing, white-labeling, or custom feature additions, reach out through the project form and our team will share current plans.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+            <h3 className="text-sm font-semibold text-white mb-2">Will you customize these tools for my business?</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Absolutely. We can adapt either platform with custom pipelines, branding, billing, or integration work under a fixed-scope engagement.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+            <h3 className="text-sm font-semibold text-white mb-2">Do you offer free trials or demo access?</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Yes. Both live platforms are publicly accessible, and we can arrange a guided walkthrough or limited trial access for teams evaluating a white-label deployment.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+            <h3 className="text-sm font-semibold text-white mb-2">How are product updates and maintenance handled?</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Licensed and white-label deployments receive regular security patches, dependency upgrades, and feature iterations under the agreed support plan.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+            <h3 className="text-sm font-semibold text-white mb-2">Can these products run on my own cloud infrastructure?</h3>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Yes. For enterprise deployments we can provision isolated environments, custom domains, dedicated databases, and infrastructure on your preferred cloud provider.
+            </p>
+          </div>
+        </div>
+        <p className="text-center text-xs text-slate-500 mt-8">
+          All listed prices are exclusive of GST.
+        </p>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-slate-900 py-8 px-6 text-center text-xs text-slate-500">
-        <p>© 2026 Druta Systems. All rights reserved. Engineering high-speed digital products.</p>
+        <p>© 2026 Druta Systems. All rights reserved.</p>
+        <p>Built in India. Serving clients worldwide.</p>
       </footer>
     </div>
   );
