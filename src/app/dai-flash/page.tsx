@@ -1,4 +1,57 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "DAI Flash | Druta Systems",
+  description:
+    "DAI Flash by Druta Systems rapidly builds production-ready web apps and interfaces with human review. Ship complete web products in hours, not weeks.",
+  keywords: [
+    "DAI Flash",
+    "Druta Systems",
+    "rapid web app development",
+    "AI web app builder",
+    "production-ready web apps",
+    "MVP development India",
+    "Next.js development",
+    "React development",
+    "full-stack development",
+    "SaaS development",
+    "web product development",
+    "automated build engine",
+  ],
+  openGraph: {
+    title: "DAI Flash | Druta Systems",
+    description:
+      "DAI Flash by Druta Systems rapidly builds production-ready web apps and interfaces with human review. Ship complete web products in hours, not weeks.",
+    type: "website",
+    siteName: "Druta Systems",
+  },
+  twitter: {
+    card: "summary",
+    title: "DAI Flash | Druta Systems",
+    description:
+      "DAI Flash by Druta Systems rapidly builds production-ready web apps and interfaces with human review. Ship complete web products in hours, not weeks.",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "DAI Flash",
+  provider: {
+    "@type": "Organization",
+    name: "Druta Systems",
+  },
+  serviceType: "Rapid web application development",
+  description:
+    "DAI Flash is Druta Systems' rapid build engine for shipping complete, production-ready web interfaces and applications with human review at every step.",
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "INR",
+    price: "100000",
+    description: "Starting price for MVP build — final quote depends on project scope.",
+  },
+};
 
 const buildCards = [
   {
@@ -137,6 +190,10 @@ const techBadges = [
 export default function DaiFlashPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <nav className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           <Link href="/" className="text-lg font-semibold text-white">

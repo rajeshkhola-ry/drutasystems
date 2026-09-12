@@ -82,6 +82,57 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500 selection:text-black">
+      <title>Products & Custom AI Software Development | Druta Systems</title>
+      <meta name="description" content="Explore Druta Systems' in-house AI and SaaS products plus custom software development for startups and businesses in India and worldwide." />
+      <meta name="keywords" content="custom software development India, AI development company, SaaS products, MVP development, product engineering, Next.js agency, OpenAI developers, Druta Systems" />
+      <meta name="robots" content="index, follow" />
+      <link rel="canonical" href="https://drutasystems.com/products" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://drutasystems.com/products" />
+      <meta property="og:title" content="Products & Custom AI Software Development | Druta Systems" />
+      <meta property="og:description" content="Explore Druta Systems' in-house AI and SaaS products plus custom software development for startups and businesses in India and worldwide." />
+      <meta property="og:site_name" content="Druta Systems" />
+      <meta property="og:locale" content="en_IN" />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content="Products & Custom AI Software Development | Druta Systems" />
+      <meta name="twitter:description" content="Explore Druta Systems' in-house AI and SaaS products plus custom software development for startups and businesses in India and worldwide." />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: 'Custom Software & AI Product Development',
+            serviceType: 'Software Development, AI Engineering, SaaS Product Design',
+            provider: {
+              '@type': 'Organization',
+              name: 'Druta Systems',
+              url: 'https://drutasystems.com',
+            },
+            areaServed: ['IN', 'US', 'Worldwide'],
+            description:
+              'Full-stack AI and SaaS engineering studio building MVPs, enterprise platforms, and video/AI automation tools for startups and businesses in India and worldwide.',
+            offers: [
+              {
+                '@type': 'Offer',
+                name: 'MVP Sprint',
+                price: '100000',
+                priceCurrency: 'INR',
+              },
+              {
+                '@type': 'Offer',
+                name: 'Full-Scale SaaS',
+                priceCurrency: 'INR',
+              },
+              {
+                '@type': 'Offer',
+                name: 'Enterprise Custom',
+                priceCurrency: 'USD',
+              },
+            ],
+          }),
+        }}
+      />
       {/* Navigation */}
       <nav className="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
