@@ -25,7 +25,6 @@ export default function Home() {
           <div className="flex items-center gap-6 text-sm font-medium">
             <Link href="/" className="text-cyan-400">Home</Link>
             <Link href="/products" className="text-slate-400 hover:text-white transition-colors">Products</Link>
-            <Link href="/case-studies" className="text-slate-400 hover:text-white transition-colors">Case Studies</Link>
             <a href="#services" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Capabilities</a>
             <AdminReportsButton />
             <a href="#contact" className="px-4 py-2 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold transition-all shadow-md shadow-cyan-500/20">

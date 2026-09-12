@@ -101,7 +101,6 @@ export default function Home() {
           <div className="flex items-center gap-6 text-sm font-medium">
             <Link href="/" className="text-cyan-400">Home</Link>
             <Link href="/products" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Products</Link>
-            <Link href="/case-studies" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Case Studies</Link>
             <a href="#showcase" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Portfolio</a>
             <a href="#pricing" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Pricing & Plans</a>
             <a href="#faq" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">FAQ</a>
