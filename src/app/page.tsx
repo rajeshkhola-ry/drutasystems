@@ -26,6 +26,7 @@ export default function Home() {
             <Link href="/" className="text-cyan-400">Home</Link>
             <Link href="/products" className="text-slate-400 hover:text-white transition-colors">Products</Link>
             <Link href="/amc" className="text-slate-400 hover:text-white transition-colors">AMC</Link>
+            <Link href="/dai-flash" className="text-slate-400 hover:text-white transition-colors">DAI Flash</Link>
             <a href="#services" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Capabilities</a>
             <AdminReportsButton />
             <a href="#contact" className="px-4 py-2 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold transition-all shadow-md shadow-cyan-500/20">
@@ -186,8 +187,8 @@ export default function Home() {
           <div className="md:col-span-2 rounded-2xl border border-slate-800 bg-slate-900/40 p-8 flex flex-col justify-between hover:border-amber-500/50 transition-all group">
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
-                  <Cpu className="w-6 h-6" />
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-500 flex items-center justify-center text-slate-950 font-bold shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+                  <Cpu className="w-6 h-6 text-white" />
                 </div>
                 <span className="text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 font-semibold border border-amber-500/20">
                   In-House Engine
@@ -208,9 +209,12 @@ export default function Home() {
                 <span className="px-2.5 py-1 bg-slate-800/80 rounded-md">High-Velocity Delivery</span>
               </div>
             </div>
-            <a href="#contact" className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition-all">
-              See How DAI Flash Delivers Faster &amp; Cheaper →
-            </a>
+            <Link href="/dai-flash" className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition-all">
+              Explore DAI Flash →
+            </Link>
+            <Link href="/dai-flash#industries" className="mt-3 text-center text-xs text-slate-400 hover:text-amber-300 transition-colors">
+              See pricing &amp; industries we serve
+            </Link>
           </div>
         </div>
       </section>

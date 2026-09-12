@@ -100,6 +100,7 @@ export default function Home() {
           </Link>
           <div className="flex items-center gap-6 text-sm font-medium">
             <Link href="/" className="text-cyan-400">Home</Link>
+            <Link href="/dai-flash" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">DAI Flash</Link>
             <Link href="/products" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Products</Link>
             <Link href="/amc" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">AMC</Link>
             <a href="#showcase" className="text-slate-400 hover:text-white transition-colors hidden sm:inline">Portfolio</a>
@@ -309,13 +310,17 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Tier 1 */}
-          <div className="p-7 rounded-3xl border border-slate-800 bg-slate-900/40 flex flex-col justify-between">
+          <div className="relative p-7 rounded-3xl border border-slate-800 bg-slate-900/40 flex flex-col justify-between">
+            <div className="absolute -top-3 right-6 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 text-[10px] font-extrabold uppercase tracking-wider">
+              Save up to 50%*
+            </div>
             <div>
               <h3 className="text-lg font-bold text-white mb-1">MVP Sprint</h3>
               <p className="text-xs text-slate-400 mb-4">For founders needing a fast, working product to pitch or validate.</p>
               <div className="mb-4">
-                <div className="text-3xl font-extrabold text-white">₹35,000 <span className="text-slate-400">/ $499</span></div>
+                <div className="text-3xl font-extrabold text-white">₹1,00,000 <span className="text-slate-400">/ $1,499</span></div>
                 <div className="text-xs text-slate-500 font-medium mt-1">one-time</div>
+                <div className="text-[10px] text-slate-500 mt-1">*Conditions apply.</div>
               </div>
               <ul className="text-xs text-slate-300 space-y-2 mb-6">
                 <li className="flex items-center gap-2"><Check className="w-4 h-4 text-cyan-400" /> 1-2 Weeks Rapid Delivery</li>

@@ -130,6 +130,12 @@ export default function AmcPage() {
               AMC
             </Link>
             <Link
+              href="/dai-flash"
+              className="text-sm text-slate-300 transition hover:text-cyan-400"
+            >
+              DAI Flash
+            </Link>
+            <Link
               href="/#contact"
               className="text-sm text-slate-300 transition hover:text-cyan-400"
             >
