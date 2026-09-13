@@ -433,7 +433,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t border-slate-900 py-8 px-6 text-center text-xs text-slate-500">
         <p>© 2026 Druta Systems. All rights reserved.</p>
-        <p className="mt-1">Built in India. Serving clients worldwide.</p>
+        <p className="mt-1">Serving clients worldwide.</p>
       </footer>
     </div>
   );

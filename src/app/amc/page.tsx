@@ -438,6 +438,17 @@ export default function AmcPage() {
             </form>
           </div>
         </section>
+
+        <footer className="border-t border-slate-800 py-8">
+          <div className="mx-auto max-w-7xl px-6 text-center">
+            <p className="text-sm text-slate-400">
+              &copy; {new Date().getFullYear()} Druta Systems. All rights reserved.
+            </p>
+            <p className="mt-2 text-sm text-slate-400">
+              Serving clients worldwide.
+            </p>
+          </div>
+        </footer>
       </main>
     </>
   );
