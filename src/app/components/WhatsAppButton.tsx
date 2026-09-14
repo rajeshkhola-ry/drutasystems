@@ -1,5 +1,5 @@
-const WHATSAPP_URL =
-  'https://wa.me/919899115572?text=Hi%20Druta%20Systems,%20I%20would%20like%20to%20discuss%20a%20project.';
+const WHATSAPP_PHONE = '919899115572';
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE}?text=Hi%20Druta%20Systems,%20I%20would%20like%20to%20discuss%20a%20project.`;
 
 export default function WhatsAppButton() {
   return (

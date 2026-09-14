@@ -13,6 +13,8 @@ const ACCENT_STYLES: Record<Accent, { text: string; border: string; glow: string
   },
 };
 
+const BROWSER_DOT_COLORS = ['bg-red-500', 'bg-yellow-500', 'bg-green-500'];
+
 interface ProductMockupProps {
   url: string;
   accent: Accent;
@@ -27,9 +29,9 @@ export default function ProductMockup({ url, accent, stats, badges }: ProductMoc
   return (
     <div className={`mb-6 rounded-2xl border ${styles.border} bg-slate-950/80 overflow-hidden shadow-inner`}>
       <div className="flex items-center gap-1.5 px-4 py-2.5 bg-slate-900/80 border-b border-slate-800/80">
-        <span className="w-2.5 h-2.5 rounded-full bg-red-500" />
-        <span className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
-        <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
+        {BROWSER_DOT_COLORS.map((color) => (
+          <span key={color} className={`w-2.5 h-2.5 rounded-full ${color}`} />
+        ))}
         <span className="ml-3 text-[10px] text-slate-500 font-mono truncate">{url}</span>
       </div>
       <div className={`p-4 bg-gradient-to-br ${styles.glow} to-transparent`}>

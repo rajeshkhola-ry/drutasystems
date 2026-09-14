@@ -29,6 +29,10 @@ export const DRUTA_AGENTS: DrutaAgent[] = [
   { id: "opus", label: "Claude Opus", modelId: "claude-3-opus-20240229", provider: "anthropic", thinking: "advanced", contextLabel: "Max", input: 0.015, output: 0.075 },
 ];
 
+export function findAgentById(id: string): DrutaAgent | undefined {
+  return DRUTA_AGENTS.find((agent) => agent.id === id);
+}
+
 export const DRUTA_AGENT_LABELS = DRUTA_AGENTS.map((a) => a.label);
 
 export const THINKING_MODE_LABELS: Record<DrutaAgent["thinking"], string> = {

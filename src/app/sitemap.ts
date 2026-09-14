@@ -1,27 +1,29 @@
 import { MetadataRoute } from 'next';
 
+const BASE = 'https://drutasystems.com';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://drutasystems.com',
+      url: BASE,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 1,
     },
     {
-      url: 'https://drutasystems.com/products',
+      url: `${BASE}/products`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: 'https://drutasystems.com/dai-flash',
+      url: `${BASE}/dai-flash`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
-      url: 'https://drutasystems.com/amc',
+      url: `${BASE}/amc`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,

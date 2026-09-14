@@ -13,6 +13,10 @@ export default function AdminReportsButton() {
     async function checkSession() {
       try {
         const response = await fetch(ADMIN_SESSION_ENDPOINT, { cache: "no-store" });
+        if (!response.ok) {
+          if (!ignore) setAuthenticated(false);
+          return;
+        }
         const body = (await response.json()) as { authenticated?: boolean };
         if (!ignore) setAuthenticated(Boolean(body.authenticated));
       } catch {
